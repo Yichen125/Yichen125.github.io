@@ -23,7 +23,7 @@ function draw()
     x = x + dx;
     y = y + dy;
 
-x2 = x2 + dx2;
+	x2 = x2 + dx2;
     y2 = y2 + dy2;
 
     // TODO: 如果發生碰撞(畫布寬canvas.width, 畫布高canvas.height)，則改變速度(dx, dy)和顏色(color)
@@ -33,12 +33,12 @@ if (y > canvas.height || y < 0) dy = -dy;
 if (x2 > canvas.width || x2 < 0) dx2 = -dx2;
 if (y2 > canvas.height ||y2 < 0) dy2 = -dy2;
 
-if ((x-x2)*(x-x2)+(y-y2)*(y-y2) <= (r-r2)*(r-r2))
+if ((x-x2)*(x-x2)+(y-y2)*(y-y2) <= (r+r2)*(r+r2))
 {
-let R = r + r2;
-[dx,dx2] = [((r-r2)*dx + r2*dx2)/R, ((r2-r)*dx2 + r*dx)/R];
-[dy,dy2] = [((r-r2)*dy + r2*dy2)/R, ((r2-r)*dy2 + r*dy)/R];
-    }
+	let R = r + r2;
+	[dx,dx2] = [((r-r2)*dx + 2*r2*dx2)/R, ((r2-r)*dx2 + 2*r*dx)/R];
+	[dy,dy2] = [((r-r2)*dy + 2*r2*dy2)/R, ((r2-r)*dy2 + 2*r*dy)/R];
+}
 
 drawBall(x, y, r, color);
 drawBall(x2, y2, r2, color2);
